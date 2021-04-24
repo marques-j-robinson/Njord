@@ -6,6 +6,7 @@
 # Part 2
 # -
 
+
 class Solution:
 
     def __init__(self, data):
