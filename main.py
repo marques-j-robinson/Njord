@@ -57,7 +57,7 @@ def main():
 
     # get module and execute solution
     module = importlib.import_module(f"Events.{event}.day{day}")
-    solution = module.Solution(data)
+    solution = module.Solution(data.strip())
     solution.run()
 
 
