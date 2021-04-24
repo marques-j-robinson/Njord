@@ -10,7 +10,7 @@
 class Solution:
 
     def __init__(self, data):
-        self.data = [(d[0], int(d[1:len(d)])) for d in data.strip().split(', ')]
+        self.data = [(d[0], int(d[1:len(d)])) for d in data.split(', ')]
 
     def part_01(self):
         self.res = 0
