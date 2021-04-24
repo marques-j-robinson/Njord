@@ -1,3 +1,11 @@
+# Psuedo code
+
+# Part 1
+# -
+
+# Part 2
+# -
+
 class Solution:
 
     def __init__(self, data):
