@@ -43,7 +43,9 @@ def main():
             day = None
 
     # cache layer
-    cache_path = f'tmp/{event}_{day}'
+    if os.path.isdir('cache') is False:
+        os.mkdir('cache')
+    cache_path = f'cache/{event}_{day}'
     if is_cache(cache_path) is True:
         print('Cached!')
         f = open(cache_path, 'r')
