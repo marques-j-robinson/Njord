@@ -23,12 +23,6 @@ class Solution:
     def __init__(self, data):
         self.data = data.split('\n')
 
-    def run(self):
-        self.part_01()
-        print(self.res)
-        self.part_02()
-        print(self.res)
-
     def part_01(self):
         self.res = 0
         for dimensions in self.data:

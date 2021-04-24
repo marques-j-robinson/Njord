@@ -58,7 +58,10 @@ def main():
     # get module and execute solution
     module = importlib.import_module(f"Events.{event}.day{day}")
     solution = module.Solution(data.strip())
-    solution.run()
+    solution.part_01()
+    print(solution.res)
+    solution.part_02()
+    print(solution.res)
 
 
 if __name__ == "__main__":
