@@ -1,33 +1,23 @@
-# Psuedo code
-
-# Part 1
-# -
-
-# Part 2
-# -
-
-
 class Solution:
 
     def __init__(self, data):
-        nums = [int(x) for x in data]
-        self.prev = nums[len(nums) - 1]
-        self.half = len(nums) // 2
-        self.data = nums
+        self.data = [int(x) for x in data]
+        self.p1 = 0
+        self.p2 = 0
 
     def part_01(self):
-        self.res = 0
+        prev = self.data[len(self.data) - 1]
         for idx, x in enumerate(self.data):
-            if self.prev == x:
-                self.res += x
-            self.prev = x
+            if prev == x:
+                self.p1 += x
+            prev = x
 
     def part_02(self):
-        self.res = 0
+        half = len(self.data) // 2
         for idx, x in enumerate(self.data):
-            if idx + self.half > len(self.data) - 1:
-                half_i = self.data[idx - self.half]
+            if idx + half > len(self.data) - 1:
+                half_i = self.data[idx - half]
             else:
-                half_i = self.data[idx + self.half]
+                half_i = self.data[idx + half]
             if half_i == x:
-                self.res += x
+                self.p2 += x

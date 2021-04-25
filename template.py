@@ -1,19 +1,12 @@
-# Psuedo code
-
-# Part 1
-# -
-
-# Part 2
-# -
-
-
 class Solution:
 
     def __init__(self, data):
         self.data = data
+        self.p1 = 0
+        self.p2 = 0
 
     def part_01(self):
-        self.res = 0
+        pass
 
     def part_02(self):
-        self.res = 0
+        pass

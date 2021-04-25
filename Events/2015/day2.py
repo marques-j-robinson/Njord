@@ -1,20 +1,3 @@
-# Psuedo code
-
-# data is a list of dimensions (l, w, h)
-
-# Part 1
-# - loop through the dimensions
-# - create a box
-# - find the surface area of the box and add it to the total
-# - find the area of the smallest side and add it to the total
-
-# Part 2
-# - loop through the dimensions
-# - create a box
-# - find the smallest perimeter of any one face and add it to the total
-# - find the cubic feet of volume of the box
-
-
 import numpy
 
 
@@ -22,18 +5,18 @@ class Solution:
 
     def __init__(self, data):
         self.data = data.split('\n')
+        self.p1 = 0
+        self.p2 = 0
 
     def part_01(self):
-        self.res = 0
         for dimensions in self.data:
             box = Box(dimensions)
-            self.res += box.calc_surface_area() + box.calc_sm_area()
+            self.p1 += box.calc_surface_area() + box.calc_sm_area()
 
     def part_02(self):
-        self.res = 0
         for dimensions in self.data:
             box = Box(dimensions)
-            self.res += box.calc_sm_perimeter() + box.calc_cubic_volumn()
+            self.p2 += box.calc_sm_perimeter() + box.calc_cubic_volumn()
 
 
 class Box:

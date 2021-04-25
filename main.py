@@ -5,9 +5,6 @@ import importlib
 import requests
 from dotenv import load_dotenv
 
-from utils import is_event, is_day, is_cache
-
-
 load_dotenv()
 SESSION = os.getenv('SESSION')
 
@@ -16,6 +13,18 @@ def get_puzzle_input(event, day):
     uri = f"http://adventofcode.com/{event}/day/{day}/input"
     res = requests.get(uri, cookies={"session": SESSION})
     return res.text
+
+
+def is_event(event):
+    return os.path.isdir(f'Events/{event}')
+
+
+def is_day(event, day):
+    return os.path.isfile(f'Events/{event}/day{day}.py')
+
+
+def is_cache(cache_path):
+    return os.path.isfile(cache_path)
 
 
 def main():
@@ -61,9 +70,9 @@ def main():
     module = importlib.import_module(f"Events.{event}.day{day}")
     solution = module.Solution(data.strip())
     solution.part_01()
-    print(solution.res)
+    print(solution.p1)
     solution.part_02()
-    print(solution.res)
+    print(solution.p2)
 
 
 if __name__ == "__main__":

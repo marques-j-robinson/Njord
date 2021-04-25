@@ -1,30 +1,21 @@
-# Psuedo code
-
-# Part 1
-# -
-
-# Part 2
-# -
-
-
 class Solution:
 
     def __init__(self, data):
         self.data = data.split('\n')
+        self.p1 = 0
+        self.p2 = 0
 
     def part_01(self):
-        self.res = 0
         for l in self.data:
             v = Validation(l)
             if v.vowel_count() and v.dup_letters() and v.check_forbidden():
-                self.res += 1
+                self.p1 += 1
 
     def part_02(self):
-        self.res = 0
         for l in self.data:
             v = Validation(l)
             if v.dup_pairs() and v.repeat_every_other_letter():
-                self.res += 1
+                self.p2 += 1
 
 
 vowels = 'aeiou'

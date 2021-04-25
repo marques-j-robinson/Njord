@@ -1,19 +1,11 @@
-# Psuedo code
-
-# Part 1
-# -
-
-# Part 2
-# -
-
-
 class Solution:
 
     def __init__(self, data):
         self.data = [(d[0], int(d[1:len(d)])) for d in data.split(', ')]
+        self.p1 = 0
+        self.p2 = 0
 
     def part_01(self):
-        self.res = 0
         direction = "N"
         G = Grid()
         for turn, steps in self.data:
@@ -23,10 +15,9 @@ class Solution:
                 G.move(direction)
                 G.add_seen()
 
-        self.res = G.manhattan_distance()
+        self.p1 = G.manhattan_distance()
 
     def part_02(self):
-        self.res = 0
         direction = "N"
         G = Grid()
         for turn, steps in self.data:
@@ -34,8 +25,8 @@ class Solution:
             while steps > 0:
                 steps -= 1
                 G.move(direction)
-                if self.res == 0 and G.has_seen():
-                    self.res = G.manhattan_distance()
+                if self.p2 == 0 and G.has_seen():
+                    self.p2 = G.manhattan_distance()
                 G.add_seen()
 
 
