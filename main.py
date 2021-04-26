@@ -9,39 +9,10 @@ load_dotenv()
 SESSION = os.getenv('SESSION')
 
 
-def is_event(event):
-    return os.path.isdir(f'Events/{event}')
-
-
-def is_day(event, day):
-    return os.path.isfile(f'Events/{event}/day{day}.py')
-
-
-def is_cache(cache_path):
-    return os.path.isfile(cache_path)
-
-
 def get_puzzle_input(event, day):
     uri = f"http://adventofcode.com/{event}/day/{day}/input"
     res = requests.get(uri, cookies={"session": SESSION})
     return res.text
-
-
-def cache_layer(event, day):
-    if os.path.isdir('cache') is False:
-        os.mkdir('cache')
-    cache_path = f'cache/{event}_{day}'
-    if is_cache(cache_path) is True:
-        print('Cached!')
-        f = open(cache_path, 'r')
-        data = f.read()
-    else:
-        print('need to get data from server...')
-        data = get_puzzle_input(event, day)
-        f = open(cache_path, 'a')
-        f.write(data)
-        f.close()
-    return data
 
 
 def user_input():
@@ -55,17 +26,34 @@ def user_input():
         # prompt for event
         while event is None:
             event = input('Event (year): ')
-            if is_event(event) is False:
+            if os.path.isdir(f'Events/{event}') is False:
                 print('Event does not exist... Try again.')
                 event = None
 
         # prompt for day
         while day is None:
             day = input('Day: ')
-            if is_day(event, day) is False:
+            if os.path.isfile(f'Events/{event}/day{day}.py') is False:
                 print('Day does not exist... Try again.')
                 day = None
     return [event, day]
+
+
+def cache_layer(event, day):
+    if os.path.isdir('cache') is False:
+        os.mkdir('cache')
+    cache_path = f'cache/{event}_{day}'
+    if os.path.isfile(cache_path) is True:
+        print('Cached!')
+        f = open(cache_path, 'r')
+        data = f.read()
+    else:
+        print('need to get data from server...')
+        data = get_puzzle_input(event, day)
+        f = open(cache_path, 'a')
+        f.write(data)
+        f.close()
+    return data
 
 
 def solve(event, day, data):
