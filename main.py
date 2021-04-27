@@ -9,12 +9,6 @@ load_dotenv()
 SESSION = os.getenv('SESSION')
 
 
-def get_puzzle_input(event, day):
-    uri = f"http://adventofcode.com/{event}/day/{day}/input"
-    res = requests.get(uri, cookies={"session": SESSION})
-    return res.text
-
-
 def user_input():
     event = None
     day = None
@@ -37,6 +31,12 @@ def user_input():
                 print('Day does not exist... Try again.')
                 day = None
     return [event, day]
+
+
+def get_puzzle_input(event, day):
+    uri = f"http://adventofcode.com/{event}/day/{day}/input"
+    res = requests.get(uri, cookies={"session": SESSION})
+    return res.text
 
 
 def cache_layer(event, day):

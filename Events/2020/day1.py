@@ -1,9 +1,9 @@
 class Solution:
 
     def __init__(self, data):
-        self.data = [int(l) for l in data.split()]
         self.p1 = 0
         self.p2 = 0
+        self.data = [int(l) for l in data.split()]
 
     def part_01(self):
         for i in self.data:

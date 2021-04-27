@@ -4,9 +4,9 @@ import numpy
 class Solution:
 
     def __init__(self, data):
-        self.data = data.split('\n')
         self.p1 = 0
         self.p2 = 0
+        self.data = data.split('\n')
 
     def part_01(self):
         for dimensions in self.data:

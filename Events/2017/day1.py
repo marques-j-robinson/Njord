@@ -1,9 +1,9 @@
 class Solution:
 
     def __init__(self, data):
-        self.data = [int(x) for x in data]
         self.p1 = 0
         self.p2 = 0
+        self.data = [int(x) for x in data]
 
     def part_01(self):
         prev = self.data[len(self.data) - 1]
