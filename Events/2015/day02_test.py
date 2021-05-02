@@ -2,28 +2,27 @@ import unittest
 from day02 import Solution
 
 
+s = Solution()
+
+
 class TestSolution201502(unittest.TestCase):
 
     def test_part_01(self):
-        data = "2x3x4"
-        s = Solution(data)
-        s.part_01()
+        s.data = "2x3x4"
+        s.solve(1)
         self.assertEqual(s.p1, 58)
 
-        data = "1x1x10"
-        s = Solution(data)
-        s.part_01()
+        s.data = "1x1x10"
+        s.solve(1)
         self.assertEqual(s.p1, 43)
 
     def test_part_02(self):
-        data = "2x3x4"
-        s = Solution(data)
-        s.part_02()
+        s.data = "2x3x4"
+        s.solve(2)
         self.assertEqual(s.p2, 34)
 
-        data = "1x1x10"
-        s = Solution(data)
-        s.part_02()
+        s.data = "1x1x10"
+        s.solve(2)
         self.assertEqual(s.p2, 14)
 
 
