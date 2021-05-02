@@ -91,27 +91,33 @@ class DataTranslations(DataFetcher):
 
 class BaseSolution(DataTranslations):
 
-    p1 = 0
-    p2 = 0
-
     def part_01(self):
         pass
 
     def part_02(self):
         pass
 
-    def solve(self):
+    def reset(self):
+        self.p1 = 0
+        self.p2 = 0
+
+    def solve(self, only=None):
+        self.reset()
         self.translate()
-        self.part_01()
-        print(self.p1)
-        self.part_02()
-        print(self.p2)
-        self.copy_to_clipboard()
+        if only == 1:
+            self.part_01()
+        elif only == 2:
+            self.part_02()
+        else:
+            self.part_01()
+            self.part_02()
 
     def copy_to_clipboard(self):
+        print(self.p1)
         if self.p2 == 0:
             pyperclip.copy(self.p1)
         else:
+            print(self.p2)
             pyperclip.copy(self.p2)
 
 
