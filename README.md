@@ -39,6 +39,10 @@ Cached!
 ## Templates
 Templates live in `templates/`. Copy the templates when beginning a new solution.
 
+Generate templates with the following commands:
+- `$ python generate_templates.py 2021` Generate all of 2021
+- `$ python generate_templates.py 2021 1` Generate only day 01 of 2021
+
 ## Tests
 Using standard `unittest` module for testsing.
 Custom `discover` arguments make the filesystem architecture flexible.
@@ -47,6 +51,3 @@ Custom `discover` arguments make the filesystem architecture flexible.
 The following are useful testing commands:
 - `python -m unittest discover -s Events/2020 -p "*_test.py"` Test all of 2020
 - `python -m unittest discover -s Events/2020 -p "*01_test.py"` Test only day 01 of 2020
-
-## TODO
-- Write a script to automate solution/test files from the templates

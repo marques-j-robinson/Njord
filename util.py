@@ -15,14 +15,11 @@ class UserInput:
     def __init__(self):
         self.event = None
         self.day = None
-        if self.has_argvs():
+        if has_argvs():
             self.event = sys.argv[1]
             self.day = sys.argv[2]
         else:
             self.prompt()
-
-    def has_argvs(self):
-        return len(sys.argv) >= 2
 
     def prompt(self):
         while self.event is None:
@@ -119,9 +116,13 @@ class BaseSolution(DataTranslations):
 
 
 def leading_zero(n):
-    return n.zfill(2)
+    return str(n).zfill(2)
 
 
 def create_cache_dir():
     if os.path.isdir('cache') is False:
         os.mkdir('cache')
+
+
+def has_argvs():
+    return len(sys.argv) >= 3
