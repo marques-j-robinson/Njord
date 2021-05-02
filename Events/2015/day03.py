@@ -1,9 +1,7 @@
-class Solution:
+from util import BaseSolution
 
-    def __init__(self, data):
-        self.p1 = 0
-        self.p2 = 0
-        self.data = data
+
+class Solution(BaseSolution):
 
     def part_01(self):
         grid = Grid()
@@ -27,7 +25,7 @@ class Grid:
     def __init__(self):
         self.x = 0
         self.y = 0
-        self.seen = []
+        self.seen = ['0,0']
 
     def add_seen(self):
         coord = f"{self.x},{self.y}"
@@ -35,7 +33,6 @@ class Grid:
             self.seen.append(coord)
 
     def move(self, direction):
-        self.add_seen()
         if direction == '^':
             self.y += 1
         elif direction == '>':
@@ -44,6 +41,7 @@ class Grid:
             self.y -= 1
         elif direction == '<':
             self.x -= 1
+        self.add_seen()
 
 
 def combined(a, b):

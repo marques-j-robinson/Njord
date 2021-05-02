@@ -1,9 +1,10 @@
-class Solution:
+from util import BaseSolution
 
-    def __init__(self, data):
-        self.p1 = 0
-        self.p2 = 0
-        self.data = [int(x) for x in data.split()]
+
+class Solution(BaseSolution):
+
+    def translate(self):
+        self.data = [int(x) for x in self.data.split()]
 
     def part_01(self):
         for m in self.data:

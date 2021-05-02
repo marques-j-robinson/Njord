@@ -1,12 +1,12 @@
 import re
 
+from util import BaseSolution
 
-class Solution:
 
-    def __init__(self, data):
-        self.p1 = 0
-        self.p2 = 0
-        self.data = data.split('\n')
+class Solution(BaseSolution):
+
+    def translate(self):
+        self.split_by_new_line()
 
     def part_01(self):
         for line in self.data:

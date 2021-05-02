@@ -50,4 +50,3 @@ The following are useful testing commands:
 
 ## TODO
 - Write a script to automate solution/test files from the templates
-- Automate solution copy to clipboard during live run

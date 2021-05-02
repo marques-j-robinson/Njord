@@ -1,13 +1,14 @@
-class Solution:
+from util import BaseSolution
 
-    def __init__(self, data):
-        self.p1 = 0
-        self.p2 = 0
-        self.data = [int(x) for x in data]
+
+class Solution(BaseSolution):
+
+    def translate(self):
+        self.int_list()
 
     def part_01(self):
         prev = self.data[len(self.data) - 1]
-        for idx, x in enumerate(self.data):
+        for x in self.data:
             if prev == x:
                 self.p1 += x
             prev = x

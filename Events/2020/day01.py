@@ -1,9 +1,11 @@
-class Solution:
+from util import BaseSolution
 
-    def __init__(self, data):
-        self.p1 = 0
-        self.p2 = 0
-        self.data = [int(l) for l in data.split()]
+
+class Solution(BaseSolution):
+
+    def translate(self):
+        self.split_by_new_line()
+        self.int_list()
 
     def part_01(self):
         for i in self.data:

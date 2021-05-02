@@ -1,12 +1,9 @@
 import hashlib
 
+from util import BaseSolution
 
-class Solution:
 
-    def __init__(self, data):
-        self.p1 = 0
-        self.p2 = 0
-        self.data = data
+class Solution(BaseSolution):
 
     def part_01(self):
         mine = Mine(self.data)
@@ -36,6 +33,6 @@ class Mine:
 
 
 def extract(secret_key, count):
-    str2hash = f"{secret_kec}{count}"
+    str2hash = f"{secret_key}{count}"
     res = hashlib.md5(str2hash.encode())
     return res.hexdigest()

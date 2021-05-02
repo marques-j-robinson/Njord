@@ -1,9 +1,7 @@
-class Solution:
+from util import BaseSolution
 
-    def __init__(self, data):
-        self.p1 = 0
-        self.p2 = 0
-        self.data = data
+
+class Solution(BaseSolution):
 
     def part_01(self):
         pass

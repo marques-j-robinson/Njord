@@ -1,12 +1,12 @@
 import numpy
 
+from util import BaseSolution
 
-class Solution:
 
-    def __init__(self, data):
-        self.p1 = 0
-        self.p2 = 0
-        self.data = data.split('\n')
+class Solution(BaseSolution):
+
+    def translate(self):
+        self.split_by_new_line()
 
     def part_01(self):
         for dimensions in self.data:
@@ -30,14 +30,6 @@ class Box:
         sm_side.remove(max(sm_side))
         return sm_side
 
-    def calc_surface_area(self):
-        [l, w, h] = self.sides
-        return 2*l*w + 2*w*h + 2*h*l
-
-    def calc_cubic_volumn(self):
-        [l, w, h] = self.sides
-        return l*w*h
-
     def calc_sm_area(self):
         sm_side = self.get_sm_side()
         return numpy.prod(sm_side)
@@ -45,3 +37,11 @@ class Box:
     def calc_sm_perimeter(self):
         sm_side = self.get_sm_side()
         return sum([2*x for x in sm_side])
+
+    def calc_surface_area(self):
+        [l, w, h] = self.sides
+        return 2*l*w + 2*w*h + 2*h*l
+
+    def calc_cubic_volumn(self):
+        [l, w, h] = self.sides
+        return l*w*h
