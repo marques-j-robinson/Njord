@@ -1,16 +1,32 @@
+import re
+
 from util import BaseSolution
 
 
 class Solution(BaseSolution):
 
     def translate(self):
+        self.split_by_new_line()
         self.data = [l.strip() for l in self.data]
 
     def part_01(self):
         G = Grid(1000)
+        for i in self.data:
+            [CMD, start, end] = parse_instruction(i)
+            G.process_command(CMD, start, end)
+        for row in G.elements:
+            for light in row:
+                if light.on is True:
+                    self.p1 += 1
 
     def part_02(self):
-        pass
+        G = Grid(1000)
+        for i in self.data:
+            [CMD, start, end] = parse_instruction(i)
+            G.process_command(CMD, start, end)
+        for row in G.elements:
+            for light in row:
+                self.p2 += light.brightness
 
 
 class Light:
@@ -27,10 +43,10 @@ class Light:
     def toggle(self):
         self.on = not self.on
 
-    def turnOn(self):
+    def turn_on(self):
         self.on = True
 
-    def turnOff(self):
+    def turn_off(self):
         self.on = False
 
 
@@ -47,40 +63,28 @@ class Grid:
             for _ in range(self.size):
                 self.elements[idx].append(Light())
 
-
-def parse_instruction(line):
-    re_res = re.match(r"^(\D*) (\d*,\d*) \D* (\d*,\d*)", line.strip())
-    task = re_res.group(1).strip()
-    [start_x, start_y] = [int(i) for i in re_res.group(2).split(",")]
-    [end_x, end_y] = [int(i) for i in re_res.group(3).split(",")]
-    return {
-        "task": task,
-        "start": (start_x, start_y),
-        "end": (end_x, end_y),
-    }
-
-
-G = Grid(1000)
-lines = [l.strip() for l in fileinput.input()]
-for line in lines:
-    res = parse_instruction(line)
-    start_x, start_y = res["start"]
-    end_x, end_y = res["end"]
-    for x in range(start_x, end_x+1):
-        for y in range(start_y, end_y+1):
-            light = G.elements[y][x]
-            if res["task"] == "toggle":
+    def process_command(self, CMD, start, end):
+        for light in self.get_range(start, end):
+            if CMD == "turn on":
+                light.turn_on()
+                light.britten(1)
+            elif CMD == "toggle":
                 light.toggle()
                 light.britten(2)
-            elif res["task"] == "turn on":
-                light.turnOn()
-                light.britten(1)
-            elif res["task"] == "turn off":
-                light.turnOff()
+            elif CMD == "turn off":
+                light.turn_off()
                 light.britten(-1)
 
-for rows in G.elements:
-    for light in rows:
-        if light.on is True:
-            p1 += 1
-        p2 += light.brightness
+    def get_range(self, start, end):
+        return [y for x in self.elements[start[0]:end[0]+1] for y in x[start[1]:end[1]+1]]
+
+
+def parse_instruction(line):
+    res = re.match(r"^(\D*) (\d*,\d*) \D* (\d*,\d*)", line)
+    [start_x, start_y] = [int(i) for i in res.group(2).split(",")]
+    [end_x, end_y] = [int(i) for i in res.group(3).split(",")]
+    return [
+        res.group(1).strip(),
+        (start_x, start_y),
+        (end_x, end_y),
+    ]
