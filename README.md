@@ -51,3 +51,15 @@ Custom `discover` arguments make the filesystem architecture flexible.
 The following are useful testing commands:
 - `python -m unittest discover -s Events/2020 -p "*_test.py"` Test all of 2020
 - `python -m unittest discover -s Events/2020 -p "*01_test.py"` Test only day 01 of 2020
+
+Useful tip, add this as an alias:
+
+```
+pytest() {
+    python -m unittest discover -s Events/$1 -p "*$2_test.py"
+}
+```
+
+With the above added:
+- `pytest 2020` Test all of 2020
+- `pytest 2020 01` Test only day 01 of 2020
