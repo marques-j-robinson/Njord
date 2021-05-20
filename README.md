@@ -63,3 +63,16 @@ pytest() {
 With the above added:
 - `pytest 2020` Test all of 2020
 - `pytest 2020 01` Test only day 01 of 2020
+
+
+## Data Translations
+Built into the `BaseSolution` class is a data translation layer.
+
+This allows for most data translations to be described with english.
+Below is a list of the available translations:
+
+```
+- split_by_empty_line
+- split_by_new_line
+- int_list
+```
