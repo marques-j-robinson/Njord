@@ -67,9 +67,8 @@ class Solution(BaseSolution):
 ```
 
 ## Templates
-Templates live in `templates/`. Copy the templates when beginning a new solution.
-
-Generate templates using the `generate_templates.py` script.
+Templates live in `templates/`.
+Generate solution files from templates using this script: `generate_templates.py`.
 
 Examples:
 - `$ python generate_templates.py 2021` Generate all of 2021
