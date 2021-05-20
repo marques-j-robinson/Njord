@@ -32,7 +32,7 @@ Built into this project is a cache layer.
 When a solution is run the script will first look in `cache/` for the file.
 If the file is not there, the script will request the data and then save the data to `cache/`.
 
-## Data Translations
+## Data Translation Layer
 Built into the `BaseSolution` class is a data translation layer.
 
 This allows for some reoccurring data translations to be described with english.
@@ -46,7 +46,7 @@ Below is a list of the available translations:
 
 ### Usage
 Inside of the `Solution` class, define a `translate` method and include
-translations already on the `Solution` class, or create your own here.
+translations already on the `Solution` class, or create custom ones here.
 
 The example below will split the data by new line, then perform the custom translation.
 ```
