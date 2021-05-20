@@ -71,8 +71,8 @@ Templates live in `templates/`.
 Generate solution files from templates using this script: `generate.py`.
 
 Examples:
-- `$ python generate_templates.py 2021` Generate all of 2021
-- `$ python generate_templates.py 2021 1` Generate only day 01 of 2021
+- `$ python generate.py 2021` Generate all of 2021
+- `$ python generate.py 2021 1` Generate only day 01 of 2021
 
 ## Running Solutions
 There are a few options when running solutions.
