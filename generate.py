@@ -21,7 +21,6 @@ def create_event(event):
     return is_dir
 
 
-
 def main():
     if not os.path.exists('Events'):
         os.makedirs('Events')
