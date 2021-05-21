@@ -108,13 +108,13 @@ The following are useful testing commands:
 Useful tip, add this as an alias:
 
 ```
-pytest() {
+njordtest() {
     python -m unittest discover -s Events/$1 -p "*$2_test.py"
 }
 ```
 
 With the above added:
-- `pytest 2020` Test all of 2020
-- `pytest 2020 01` Test only day 01 of 2020
+- `njordtest 2020` Test all of 2020
+- `njordtest 2020 01` Test only day 01 of 2020
 
 **Note** The leading zero is required here.
