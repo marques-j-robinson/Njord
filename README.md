@@ -1,7 +1,8 @@
 # Njord
-Solutions to [Advent of Code](https://adventofcode.com/).
-
 Njord – The God of Seas and Wealth.
+
+Solution wrapper for [Advent of Code](https://adventofcode.com/) puzzles.
+My solutions can be found in the solutions branch.
 
 ## Getting Started
 ### Initial Setup
