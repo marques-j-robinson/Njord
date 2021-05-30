@@ -115,10 +115,10 @@ class BaseSolution(DataTranslations):
     def copy_to_clipboard(self):
         print(self.p1)
         if self.p2 == 0:
-            pyperclip.copy(self.p1)
+            pyperclip.copy(str(self.p1))
         else:
             print(self.p2)
-            pyperclip.copy(self.p2)
+            pyperclip.copy(str(self.p2))
 
 
 def leading_zero(n):
