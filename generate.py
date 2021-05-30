@@ -2,10 +2,7 @@ import os
 import sys
 from shutil import copyfile
 
-from util import has_argvs, leading_zero
-
-
-ALL_DAYS = range(1, 26)
+from util import ALL_DAYS, UserInput, leading_zero
 
 
 def copy_temp(e, d):
@@ -24,13 +21,13 @@ def create_event(event):
 def main():
     if not os.path.exists('Events'):
         os.makedirs('Events')
-    if has_argvs():
-        event = sys.argv[1]
-        day = sys.argv[2]
+    user_input = UserInput()
+    event = user_input.event
+    day = user_input.day
+    if event is not None and day != '':
         create_event(event)
         copy_temp(event, day)
     else:
-        event = sys.argv[1]
         is_dir = create_event(event)
         if is_dir is False:
             for day in ALL_DAYS:

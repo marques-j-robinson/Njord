@@ -3,9 +3,12 @@ from util import UserInput, leading_zero
 
 
 def main():
-    x = UserInput()
-    module = importlib.import_module(f"Events.{x.event}.day{leading_zero(x.day)}")
-    s = module.Solution(x.event, x.day)
+    user_input = UserInput()
+    event = user_input.event
+    day = user_input.day
+
+    module = importlib.import_module(f"Events.{event}.day{leading_zero(day)}")
+    s = module.Solution(event, day)
     s.solve()
     s.copy_to_clipboard()
 

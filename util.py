@@ -8,36 +8,16 @@ load_dotenv()
 
 SESSION = os.getenv('SESSION')
 BASE_URL = "http://adventofcode.com"
+ALL_DAYS = range(1, 26)
 
 
-class UserInput:
+def leading_zero(n):
+    return str(n).zfill(2)
 
-    def __init__(self):
-        self.event = None
-        self.day = None
-        if has_argvs():
-            self.event = sys.argv[1]
-            self.day = sys.argv[2]
-        else:
-            self.prompt()
 
-    def prompt(self):
-        while self.event is None:
-            self.event = input('Event (year): ')
-            if self.invalid_event():
-                print('Event does not exist... Try again.')
-                self.event = None
-        while self.day is None:
-            self.day = input('Day: ')
-            if self.invalid_day():
-                print('Day does not exist... Try again.')
-                self.day = None
-
-    def invalid_event(self):
-        return os.path.isdir(f'Events/{self.event}') is False
-
-    def invalid_day(self):
-        return os.path.isfile(f'Events/{self.event}/day{leading_zero(self.day)}.py') is False
+def create_cache_dir():
+    if os.path.isdir('cache') is False:
+        os.mkdir('cache')
 
 
 class DataFetcher:
@@ -121,14 +101,50 @@ class BaseSolution(DataTranslations):
             pyperclip.copy(str(self.p2))
 
 
-def leading_zero(n):
-    return str(n).zfill(2)
+class UserInput:
 
+    def __init__(self):
+        self.valid_events = ['2015', '2016', '2017', '2018', '2019', '2020']
+        self.event = None
+        self.day = None
 
-def create_cache_dir():
-    if os.path.isdir('cache') is False:
-        os.mkdir('cache')
+        num_argvs = len(sys.argv)
+        if num_argvs == 1:
+            self.prompt()
+        elif  num_argvs == 2:
+            self.event = sys.argv[1]
+        else:
+            self.event = sys.argv[1]
+            self.day = sys.argv[2]
 
+    def prompt(self):
+        while self.event is None:
+            self.event = input('Event (year): ')
+            if self.invalid_event():
+                print('Invalid Event... Try again.')
+                self.event = None
+        while self.day is None:
+            self.day = input('Day: ')
+            if self.invalid_day():
+                print('Invalid Day... Try again.')
+                self.day = None
 
-def has_argvs():
-    return len(sys.argv) >= 3
+    def invalid_event(self):
+        if self.event not in self.valid_events:
+            return True
+        dir_path_exists = os.path.isdir(f'Events/{self.event}')
+        if "main" in sys.argv[0]:
+            return dir_path_exists is False
+        elif "generate" in sys.argv[0]:
+            return dir_path_exists
+
+    def invalid_day(self):
+        if self.day == '':
+            return False
+        if int(self.day) not in ALL_DAYS:
+            return True
+        file_path_exists = os.path.isfile(f'Events/{self.event}/day{leading_zero(self.day)}.py')
+        if "main" in sys.argv[0]:
+            return file_path_exists is False
+        elif "generate" in sys.argv[0]:
+            return file_path_exists
