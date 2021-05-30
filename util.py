@@ -139,7 +139,7 @@ class UserInput:
             return dir_path_exists
 
     def invalid_day(self):
-        if self.day == '':
+        if self.day == '' and "generate" in sys.argv[0]:
             return False
         if int(self.day) not in ALL_DAYS:
             return True
