@@ -1,6 +1,6 @@
 import argparse
 import importlib
-from lib.util import copy_results
+import pyperclip
 
 
 def get_args():
@@ -25,6 +25,16 @@ def solve(year, day):
     s = modlue.Solution(year, day)
     s.solve()
     copy_results(s.p1, s.p2)
+
+
+def copy_results(p1, p2):
+    "Automatic copy of results to clipboard"
+    print(p1)
+    if p2 is None or p2 == 0:
+        pyperclip.copy(str(p1))
+    else:
+        print(p2)
+        pyperclip.copy(str(p2))
 
 
 if __name__ == "__main__":

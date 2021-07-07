@@ -1,20 +1,9 @@
 import os
-import pyperclip
 from dotenv import load_dotenv
 
 
 load_dotenv()
 SESSION = os.getenv('SESSION')
-
-
-def copy_results(p1, p2):
-    "Automatic copy of results to clipboard"
-    print(p1)
-    if p2 is None or p2 == 0:
-        pyperclip.copy(str(p1))
-    else:
-        print(p2)
-        pyperclip.copy(str(p2))
 
 
 class PuzzleInput:
