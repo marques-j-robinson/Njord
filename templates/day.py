@@ -1,4 +1,4 @@
-from util import BaseSolution
+from lib.solution import BaseSolution
 
 
 class Solution(BaseSolution):
