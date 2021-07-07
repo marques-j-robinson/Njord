@@ -1,4 +1,5 @@
-from puzzle_input import PuzzleInput
+from lib.data_translation import DataTranslation
+from lib.puzzle_input import PuzzleInput
 
 
 class BaseSolution(DataTranslation):
@@ -22,6 +23,10 @@ class BaseSolution(DataTranslation):
         self.p1 = 0
         self.p2 = 0
 
+    def translate(self):
+        "Optional method for perform custom translations to the puzzle_input"
+        pass
+
     def part_01(self):
         "Wrapper for the first part of the puzzle"
         pass
@@ -29,19 +34,3 @@ class BaseSolution(DataTranslation):
     def part_02(self):
         "Wrapper for the second part of the puzzle"
         pass
-
-
-class DataTranslation:
-
-    def translate(self):
-        "Optional method for perform custom translations to the input data"
-        pass
-
-    def split_by_empty_line(self):
-        self.data = [l.replace('\n', ' ').split(' ') for l in self.data.split('\n\n')]
-
-    def split_by_new_line(self):
-        self.data = self.data.split('\n')
-
-    def int_list(self):
-        self.data = [int(i) for i in self.data]

@@ -1,4 +1,5 @@
 import os
+import requests
 from dotenv import load_dotenv
 
 
@@ -12,16 +13,16 @@ class PuzzleInput:
         self.cache_path = f'cache/{year}_{day}'
         self.req_path = f'http://adventofcode.com/{year}/day/{day}/input'
 
-    def get_puzzle_input(self):
+    def get(self):
         if self.is_cached():
             return self.read_cache()
         else:
-            return self.fetch()
+            return self.fetch_raw_input()
 
     def is_cached(self):
         return os.path.isfile(self.cache_path) is True
 
-    def fetch(self):
+    def fetch_raw_input(self):
         response = requests.get(self.req_path, cookies={'session': SESSION})
         puzzle_input = response.text
         self.write_cache(puzzle_input)
