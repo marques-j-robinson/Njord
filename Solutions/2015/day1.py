@@ -5,7 +5,7 @@ class Solution(BaseSolution):
     """
     Data Structure - String
     Algorithm - Loop
-    Runtime: O(n)
+    Runtime - O(n)
     """
 
     def part_01(self):
@@ -35,6 +35,3 @@ class Building:
             self.cur_floor += 1
         else:
             self.cur_floor -= 1
-
-    def basement_entry_check(self):
-        return self.cur_floor == -1
