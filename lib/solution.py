@@ -1,4 +1,4 @@
-from lib.util import PuzzleInput
+from puzzle_input import PuzzleInput
 
 
 class BaseSolution(DataTranslation):
