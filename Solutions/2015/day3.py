@@ -1,4 +1,5 @@
 from lib.solution import BaseSolution
+from lib.util import BaseGrid
 
 
 class Solution(BaseSolution):
@@ -31,12 +32,7 @@ class Solution(BaseSolution):
         return len(a + list(set(b) - set(a)))
 
 
-class Grid:
-
-    def __init__(self):
-        self.x = 0
-        self.y = 0
-        self.seen = ['0,0']
+class Grid(BaseGrid):
 
     def move(self, direction):
         if direction == '^':
@@ -48,20 +44,3 @@ class Grid:
         elif direction == '<':
             self.left()
         self.add_seen()
-
-    def up(self):
-        self.y += 1
-
-    def right(self):
-        self.x += 1
-
-    def down(self):
-        self.y -= 1
-
-    def left(self):
-        self.x -= 1
-
-    def add_seen(self):
-        coord = f'{self.x},{self.y}'
-        if coord not in self.seen:
-            self.seen.append(coord)
