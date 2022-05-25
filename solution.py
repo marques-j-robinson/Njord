@@ -1,30 +1,33 @@
+import pyperclip
+from input_request.user_input import UserInput
 from lib.data_translation import DataTranslation
 from lib.puzzle_input import PuzzleInput
 
 
 class BaseSolution(DataTranslation):
 
-    def __init__(self, year, day):
-        self.year = year
-        self.day = day
-        self.data = None
-        self.p1 = 0
-        self.p2 = 0
-
-    def solve(self):
-        puzzle_input = PuzzleInput(self.year, self.day)
+    def __init__(self):
+        u = UserInput()
+        puzzle_input = PuzzleInput(u.year, u.day)
         self.data = puzzle_input.get()
+        self.reset()
+    
+    def solve(self):
         self.translate()
         self.reset()
         self.part_01()
         self.part_02()
 
     def reset(self):
-        self.p1 = 0
-        self.p2 = 0
+        self.res = 0
+
+    def copy_results(self):
+        pyperclip.copy(self.res)
 
     def translate(self):
-        "Optional method for perform custom translations to the puzzle_input"
+        """
+        Optional method for perform custom translations to the puzzle_input prior to the solution method being executed
+        """
         pass
 
     def part_01(self):
