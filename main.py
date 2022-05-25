@@ -1,23 +1,8 @@
-import argparse
 import importlib
 import pyperclip
 
-
-def get_args():
-    parser = parser_setup()
-    args = parser.parse_args()
-    year = args.year
-    day = args.day
-    if year is None or day is None:
-        raise Exception('MISSING_REQUIRED_ARGUMENTS')
-    return [year, day]
-
-
-def parser_setup():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-y', '--year')
-    parser.add_argument('-d', '--day')
-    return parser
+from input_request.user_input import UserInput
+# import puzzle module
 
 
 def solve(year, day):
@@ -37,5 +22,5 @@ def copy_results(p1, p2):
 
 
 if __name__ == "__main__":
-    [year, day] = get_args()
-    solve(year, day)
+    u = UserInput()
+    solve(u.year, u.day)
