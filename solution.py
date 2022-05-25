@@ -1,5 +1,4 @@
 import pyperclip
-from input_request.user_input import UserInput
 from lib.data_translation import DataTranslation
 from lib.puzzle_input import PuzzleInput
 

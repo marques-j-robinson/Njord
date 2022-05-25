@@ -1,14 +1,9 @@
 import importlib
-
-from .solution import Solution
-
-
-def solve(year, day):
-    module = importlib.import_module(f'Solutions.{year}.day{day}')
-    s = module.Solution(year, day)
-    s.solve()
+from input_request.user_input import UserInput
 
 
 if __name__ == "__main__":
-    s = Solution()
+    u = UserInput()
+    module = importlib.import_module(f'Solutions.{u.year}.day{u.day}')
+    s = module.Solution()
     s.solve()
