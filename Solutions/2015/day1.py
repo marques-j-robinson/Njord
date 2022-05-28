@@ -1,4 +1,4 @@
-from lib.solution import BaseSolution
+from ..solution import BaseSolution
 
 
 class Solution(BaseSolution):
@@ -12,7 +12,7 @@ class Solution(BaseSolution):
         apartment = Building()
         for instruction in self.data:
             apartment.step(instruction)
-        self.p1 = apartment.cur_floor
+        self.res = apartment.cur_floor
 
     def part_02(self):
         "Identify when cur_floor is first -1"
@@ -22,7 +22,7 @@ class Solution(BaseSolution):
             instruction = self.data[idx]
             apartment.step(instruction)
             idx += 1
-        self.p2 = idx
+        self.res = idx
 
 
 class Building:

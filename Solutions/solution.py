@@ -1,6 +1,10 @@
+import os
 import pyperclip
+from dotenv import load_dotenv
 from lib.data_translation import DataTranslation
 from lib.puzzle_input import PuzzleInput
+from input_request.user_input import UserInput
+load_dotenv()
 
 
 class BaseSolution(DataTranslation):
@@ -14,14 +18,21 @@ class BaseSolution(DataTranslation):
     def solve(self):
         self.translate()
         self.reset()
-        self.part_01()
-        self.part_02()
+        is_final_part = os.getenv('IS_FINAL_PART')
+        if is_final_part is True:
+            self.part_02()
+        else:
+            self.part_01()
+        self.copy_results()
 
     def reset(self):
         self.res = 0
 
     def copy_results(self):
         pyperclip.copy(self.res)
+        should_print = os.getenv('SHOULD_PRINT')
+        print('hi')
+        print(f'Solution: {self.res}')
 
     def translate(self):
         """
